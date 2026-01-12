@@ -1,0 +1,38 @@
+[package]
+name = "ruyan_rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.26.0"
+sysinfo = "0.30.0"
+winreg = "0.52.0"
+chrono = "0.4.34"
+anyhow = "1.0.79"
+serde = { version = "1.0.196", features = ["derive"] }
+serde_json = "1.0"
+rfd = "0.14.0"
+windows = { version = "0.52.0", features = [
+    "Win32_System_EventLog",
+    "Win32_Foundation",
+    "Win32_System_Services",
+    "Win32_System_Threading",
+    "Win32_Security",
+] }
+# For parsing command output or other things
+regex = "1.10.3"
+# For netstat
+netstat2 = "0.9.0"
+egui_plot = "0.26.0"
+sha2 = "0.10"
+hex = "0.4"
+reqwest = { version = "0.11", features = ["blocking", "json"] }
+
+[build-dependencies]
+winres = "0.1"
+
+[profile.release]
+opt-level = "z"  # Optimize for size
+lto = true
+strip = true
+codegen-units = 1
